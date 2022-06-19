@@ -1,0 +1,54 @@
+{
+  "agendas": [
+    {
+      "id": 1,
+      "descricao": "Agenda 01",
+      "medico": "Medico_Teste_01",
+      "data": "2021-2-2",
+      "hora": "10:20"
+    },
+    {
+      "id": 2,
+      "descricao": "Agenda 02",
+      "medico": "Medico_Teste_02",
+      "data": "2021-2-2",
+      "hora": "10:20"
+    }
+],
+"medicos": [
+  {
+    "id": 1,
+    "nome": "Medico_Teste_01",
+    "especialidade": "clinica_medica",
+    "crm": 10,
+    "uf": "SC",
+    "telefone": "(48) 90000-0000"
+  },
+  {
+    "id": 2,
+    "nome": "Medico_Teste_02",
+    "especialidade": "pediatria",
+    "crm": 20,
+    "uf": "SC",
+    "telefone": "(48) 90000-0000"
+  }
+],
+"pacientes": [
+  {
+    "id": 1,
+    "nome": "Teste 01",
+    "cpf": "000.000.000-12",
+    "data_nascimento": "1998-2-2",
+    "telefone": "(48) 80000-0000",
+    "email": "teste01@mail.com.br"
+  },
+  {
+    "id": 2,
+    "nome": "Teste 02",
+    "cpf": "000.000.000-13",
+    "data_nascimento": "1988-1-1",
+    "telefone": "(48) 90000-0000",
+    "email": "teste02@mail.com.br"
+  }
+]
+}

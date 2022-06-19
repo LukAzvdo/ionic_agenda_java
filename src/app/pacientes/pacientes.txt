@@ -1,0 +1,46 @@
+
+      {
+        id: 1,
+        nome: 'Teste 01',
+        cpf: '000.000.000-12',
+        data_nascimento: new Date(1998,2,2),
+        telefone: '(48) 80000-0000',
+        email: 'teste01@mail.com.br'
+      },
+      {
+        id: 2,
+        nome: 'Teste 02',
+        cpf: '000.000.000-13',
+        data_nascimento: new Date(1988,1,1),
+        telefone: '(48) 90000-0000',
+        email: 'teste02@mail.com.br'
+      }
+
+    //
+
+localStorage.setItem('pacientes', JSON.stringify([
+      {
+        id: 1,
+        nome: 'Teste 01',
+        cpf: '000.000.000-12',
+        data_nascimento: new Date(1998,2,2),
+        telefone: '(48) 80000-0000',
+        email: 'teste01@mail.com.br'
+      },
+      {
+        id: 2,
+        nome: 'Teste 02',
+        cpf: '000.000.000-13',
+        data_nascimento: new Date(1988,1,1),
+        telefone: '(48) 90000-0000',
+        email: 'teste02@mail.com.br'
+      }
+]));
+
+//
+
+localStorage.setItem('pacientes', undefined);
+
+//
+
+localStorage.removeItem('pacientes');

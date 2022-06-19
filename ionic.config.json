@@ -1,0 +1,7 @@
+{
+  "name": "ionic-agenda-consulta",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

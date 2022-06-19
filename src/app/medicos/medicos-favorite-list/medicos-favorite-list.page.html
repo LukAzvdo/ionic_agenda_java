@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Médicos Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Médicos Favoritos
+      <ion-spinner class="ion-margin-start" *ngIf="loading"></ion-spinner>
+    </ion-list-header>
+  </ion-list>
+  <div *ngIf="!loading">
+    <ion-card *ngFor="let medico of medicos">
+      <ion-card-header>
+        <ion-card-title>
+          {{ medico.nome }}
+          <ion-icon name="trash-outline" (click)="remove(medico)"></ion-icon>
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{ medico.especialidade }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <strong>CRM: </strong> {{ medico.crm }} <br/>
+        <strong>UF: </strong> {{ medico.uf }}<br/>
+        <strong>Telefone: </strong> {{ medico.telefone | mask: '(00) 00000-0000' }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

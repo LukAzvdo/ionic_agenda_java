@@ -1,0 +1,46 @@
+    
+      {
+        id: 1,
+        nome: 'Medico_Teste_01',
+        especialidade: 'clinica_medica',
+        crm: 10,
+        uf: 'SC',
+        telefone: '(48) 90000-0000'
+      },
+      {
+        id: 2,
+        nome: 'Medico_Teste_02',
+        especialidade: 'pediatria',
+        crm: 20,
+        uf: 'SC',
+        telefone: '(48) 90000-0000'
+      }
+
+      //
+
+  localStorage.setItem('medicos', JSON.stringify([
+    {
+        id: 1,
+        nome: 'Medico_Teste_01',
+        especialidade: 'clinica_medica',
+        crm: 10,
+        uf: 'SC',
+        telefone: '(48) 90000-0000'
+      },
+      {
+        id: 2,
+        nome: 'Medico_Teste_02',
+        especialidade: 'pediatria',
+        crm: 20,
+        uf: 'SC',
+        telefone: '(48) 90000-0000'
+      }
+]));
+
+//
+
+localStorage.setItem('medicos', undefined);
+
+//
+
+localStorage.removeItem('medicos');

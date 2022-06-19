@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Lista de Médicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Medicos Cadastrados
+      <ion-spinner class="ion-margin-start" *ngIf="loading"></ion-spinner>
+    </ion-list-header>
+
+    <div *ngIf="!loading">
+      <ion-item-sliding #sliding *ngFor="let medico of medicos">
+        <ion-item-options side="start">
+          <ion-item-option
+            color="secondary"
+            [routerLink]="['/medicos-register', medico.id]"
+          >
+            <ion-icon name="build" slot="icon-only"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="tertiary">
+            <ion-icon name="star" slot="icon-only" (click)="addFavoriteList(medico);close(sliding);"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="confirmRemove(medico)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+      <ion-item>
+        <ion-label>
+          <h1><ion-text color="primary"><strong>{{ medico.nome }}</strong></ion-text></h1>
+          <h2>
+            <small>
+              Especialidade:
+              <ion-text color="medium">
+                {{ medico.especialidade }}
+              </ion-text>
+            </small>
+          </h2>
+          <h2>
+            <small>
+              CRM:
+              <ion-text color="medium">
+                {{ medico.crm }}
+              </ion-text>
+            </small>
+          </h2>
+          <h2>
+          <small>
+            UF:
+            <ion-text color="medium">
+              {{ medico.uf }}
+            </ion-text>
+          </small>
+        </h2>
+        <h2>
+          <small>
+            Telefone:
+            <ion-text color="medium">
+              {{ medico.telefone | mask: '(00) 00000-0000' }}
+            </ion-text>
+          </small>
+        </h2>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </div>
+  </ion-list>
+  
+  <ion-fab vertical="buttom" horizontal="end">
+    <ion-fab-button [routerLink]="['/medicos-register']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>  
+  </ion-fab>
+
+</ion-content>

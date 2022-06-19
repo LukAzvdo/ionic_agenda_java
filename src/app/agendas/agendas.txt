@@ -1,0 +1,42 @@
+
+    {
+        id: 1,
+        descricao: 'Agenda 01',
+        medico: 'Medico_Teste_01',
+        data: new Date(2021,2,2),
+        hora: '10:20'
+      },
+      {
+        id: 2,
+        descricao: 'Agenda 02',
+        medico: 'Medico_Teste_02',
+        data: new Date(2021,2,2),
+        hora: '10:20'
+    }
+
+    //
+
+localStorage.setItem('agendas', JSON.stringify([
+    {
+        id: 1,
+        descricao: 'Agenda 01',
+        medico: 'Medico_Teste_01',
+        data: new Date(2021,2,2),
+        hora: '10:20'
+      },
+      {
+        id: 2,
+        descricao: 'Agenda 02',
+        medico: 'Medico_Teste_02',
+        data: new Date(2021,2,2),
+        hora: '10:20'
+    }
+]));
+
+//
+
+localStorage.setItem('agendas', undefined);
+
+//
+
+localStorage.removeItem('agendas');

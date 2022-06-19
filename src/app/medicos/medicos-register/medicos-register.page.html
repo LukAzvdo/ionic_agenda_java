@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Cadastro de Médicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="form">
+
+  <ion-card>
+    <ion-card-content>
+      <div class="ion-text-center" *ngIf="loading">
+        <ion-spinner></ion-spinner>
+      </div>
+      <div *ngIf="!loading">
+        <ion-item>
+          <ion-label position="stacked">Nome: </ion-label>
+          <ion-input type="text" formControlName="nome"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Especialidade: </ion-label>
+          <ion-select cancelText="Cancelar" okText="Selecionar" formControlName="especialidade">
+            <ion-select-option value="clinica_medica">Clinica Medica</ion-select-option>
+            <ion-select-option value="ortopedia">Ortopedia</ion-select-option>
+            <ion-select-option value="ginecologia">Ginecologia</ion-select-option>
+            <ion-select-option value="pediatria">Pediatria</ion-select-option>
+            <ion-select-option value="outros">Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">CRM: </ion-label>
+          <ion-input type="number" formControlName="crm"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">UF: </ion-label>
+          <ion-select cancelText="Cancelar" okText="Selecionar" formControlName="uf">
+            <ion-select-option value="RS">Rio Grande do Sul</ion-select-option>
+            <ion-select-option value="SC">Santa Catarina</ion-select-option>
+            <ion-select-option value="PR">Paraná</ion-select-option>
+            <ion-select-option value="SP">São Paulo</ion-select-option>
+            <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Telefone: </ion-label>
+          <!-- <ion-input type="text"formControlName="telefone"></ion-input> -->
+          <input type="text" formControlName="telefone" mask="(00) 00000-0000"/>
+        </ion-item>
+
+    </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal='end'>
+    <ion-fab-button (click)="salvar()" [disabled]="!form.valid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
