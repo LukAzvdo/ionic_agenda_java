@@ -46,13 +46,11 @@ export class AgendasRegisterPage implements OnInit,OnDestroy,ViewWillEnter,ViewD
 
     this.form = this.formBuilder.group({
       id: [''],
-      descricao: ['', [Validators.required, Validators.minLength(5)]],
+      descricao: ['', [Validators.required, Validators.minLength(4)]],
       data: ['', Validators.required],
-      // medico: ['', Validators.required],
       medicos: [[]],
       pacientes: [[]],
       procedimentos: [[]],
-      // hora: ['', Validators.required],
     });
 
     const id = +this.activatedRoute.snapshot.params.id;
@@ -117,13 +115,20 @@ export class AgendasRegisterPage implements OnInit,OnDestroy,ViewWillEnter,ViewD
     return o1.id === o2.id;
   }
 
-
-
   salvar() {
-    const { descricao } = this.form.value;
+    const { value } = this.form;
+    const { id, descricao } = value;
+
+    if (!id) {
+      delete value.id;
+    }
+
+    // value.lancamento = value.lancamento.split('T')[0];
+
     this.loading = true;
+
     this.agendasApiService
-      .save(this.form.value)
+      .save(value)
       .pipe(
         finalize(() => {
           this.loading = false;
@@ -134,10 +139,10 @@ export class AgendasRegisterPage implements OnInit,OnDestroy,ViewWillEnter,ViewD
           this.messageService.success(`Agenda ${descricao} foi salva com sucesso!`);
           this.router.navigate(['agendas-list']);
         },
-        () => {
-          this.messageService.error(`Erro ao salvar a agenda ${descricao}`, () =>
-            this.salvar()
-          );
+        ({ error }) => {
+          const erro = error?.erro ?? '';
+          const mensagem = `Erro ao salvar a agenda ${descricao} ${erro ? ': '+erro:''}`;
+          this.messageService.error(mensagem, () => this.salvar());
         }
       );
   }

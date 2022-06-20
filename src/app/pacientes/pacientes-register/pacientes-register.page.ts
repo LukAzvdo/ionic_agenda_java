@@ -32,7 +32,7 @@ export class PacientesRegisterPage implements OnInit,OnDestroy,ViewWillEnter,Vie
 
     this.form = this.formBuilder.group({
       id: [''],
-      nome: ['', [Validators.required, Validators.minLength(5)]],
+      nome: ['', [Validators.required, Validators.minLength(4)]],
       cpf: ['', Validators.required],
       nascimento: ['', Validators.required],
       telefone: ['', Validators.required],
