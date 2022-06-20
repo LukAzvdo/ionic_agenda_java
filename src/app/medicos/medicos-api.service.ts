@@ -24,6 +24,10 @@ export class MedicosApiService {
     return this.httpClient.get<Medico>(`${environment.apiUrl}/medicos/${id}`);
   }
 
+  findAll(): Observable<Medico[]> {
+    return this.httpClient.get<Medico[]>(`${environment.apiUrl}/medicos`);
+  }
+
   save(medico: Medico): Observable<Medico> {
     if(medico.id) {
       return this.httpClient.put<Medico>(`${environment.apiUrl}/medicos/${medico.id}`, medico);

@@ -23,6 +23,10 @@ export class PacientesApiService {
   findById(id: number): Observable<Paciente> {
     return this.httpClient.get<Paciente>(`${environment.apiUrl}/pacientes/${id}`);
   }
+  
+  findAll(): Observable<Paciente[]> {
+    return this.httpClient.get<Paciente[]>(`${environment.apiUrl}/pacientes`);
+  }
 
   save(paciente: Paciente): Observable<Paciente> {
     if(paciente.id) {

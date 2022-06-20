@@ -43,31 +43,49 @@
             </ion-text>
           </h1>
 
-          <h2>Médico: {{ agenda.medico }}</h2>
+          <h1>
+            <small>
+              Data:
+              <ion-text color="medium">
+                {{ agenda.data | date: 'dd/MM/yyyy - HH:mm' }}
+              </ion-text>
+            </small>
+            </h1>
 
-          <h3>
-          <small>
-            Data:
-            <ion-text color="medium">
-              {{ agenda.data | date: 'dd/MM/yyyy' }}
-            </ion-text>
-          </small>
-          </h3>
+<!--           <h2>Médico: {{ agenda.medico }}</h2> -->
 
-          <h3>
+            <h3 *ngIf="agenda.medicos?.length">
+              Medicos:
+              <ul class="medicos">
+                <li *ngFor="let medico of agenda.medicos">
+                  - {{ medico.nome }}
+                </li>
+              </ul>
+            </h3>
+            
+            <h3 *ngIf="agenda.pacientes?.length">
+              Pacientes:
+              <ul class="pacientes">
+                <li *ngFor="let paciente of agenda.pacientes">
+                  - {{ paciente.nome }}
+                </li>
+              </ul>
+            </h3>
+
+<!--           <h3>
           <small>
             Hora:
             <ion-text color="medium">
               {{ agenda.hora | date: 'HH:mm' }}
             </ion-text>
           </small>
-        </h3>
+        </h3> -->
 
         <h3 *ngIf="agenda.procedimentos?.length">
           Procedimentos:
           <ul class="procedimentos">
             <li *ngFor="let procedimento of agenda.procedimentos">
-              - {{ procedimento.description }}
+              - {{ procedimento.descricao }}
             </li>
           </ul>
         </h3>

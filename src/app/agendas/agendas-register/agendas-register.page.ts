@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewDidEnter, ViewDidLeave, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { MessageService } from 'src/app/services/message.service';
 import { AgendasApiService } from '../agendas-api.service';
-import { AgendasService } from '../agendas.service';
 import { finalize } from 'rxjs/operators';
 import { Procedimento } from 'src/app/procedimentos/procedimentos.model';
 import { ProcedimentosService } from 'src/app/procedimentos/procedimentos.service';
+import { Medico } from 'src/app/medicos/medicos.model';
+import { Paciente } from 'src/app/pacientes/pacientes.model';
+import { MedicosApiService } from 'src/app/medicos/medicos-api.service';
+import { PacientesApiService } from 'src/app/pacientes/pacientes-api.service';
 
 @Component({
   selector: 'app-agendas-register',
@@ -18,31 +21,38 @@ export class AgendasRegisterPage implements OnInit,OnDestroy,ViewWillEnter,ViewD
 
   form: FormGroup;
   loading = false;
+  medicos: Medico[];
+  pacientes: Paciente[];
   procedimentos: Procedimento[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private agendasService: AgendasService,
     private agendasApiService: AgendasApiService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
-    private ProcedimentoService: ProcedimentosService
+    private medicoApiService: MedicosApiService,
+    private pacienteApiService: PacientesApiService,
+    private procedimentoService: ProcedimentosService
 
   ) { }
 
   ngOnInit() {
     console.log('AgendasRegisterPage ngOnInit');
 
-    this.ProcedimentoService.findAll().subscribe((procedimentos) => this.procedimentos = procedimentos);
+    this.medicoApiService.findAll().subscribe((medicos) => this.medicos = medicos);
+    this.pacienteApiService.findAll().subscribe((pacientes) => this.pacientes = pacientes);
+    this.procedimentoService.findAll().subscribe((procedimentos) => this.procedimentos = procedimentos);
 
     this.form = this.formBuilder.group({
       id: [''],
       descricao: ['', [Validators.required, Validators.minLength(5)]],
-      medico: ['', Validators.required],
-      procedimentos: [[]],
       data: ['', Validators.required],
-      hora: ['', Validators.required],
+      // medico: ['', Validators.required],
+      medicos: [[]],
+      pacientes: [[]],
+      procedimentos: [[]],
+      // hora: ['', Validators.required],
     });
 
     const id = +this.activatedRoute.snapshot.params.id;

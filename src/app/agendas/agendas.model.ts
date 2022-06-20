@@ -1,11 +1,12 @@
-import { Time } from "@angular/common";
+import { Medico } from "../medicos/medicos.model";
+import { Paciente } from "../pacientes/pacientes.model";
 import { Procedimento } from "../procedimentos/procedimentos.model";
 
 export interface Agenda {
     id: number;
     descricao: string;
-    medico: string;
-    procedimetos: Procedimento[];
     data: Date;
-    hora: string;
+    medico: Medico[];
+    paciente: Paciente[];
+    procedimetos: Procedimento[];
 }
