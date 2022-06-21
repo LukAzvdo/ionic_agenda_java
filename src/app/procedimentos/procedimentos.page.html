@@ -18,13 +18,12 @@
       <ion-item-sliding *ngFor="let procedimento of procedimentos">
         <ion-item-options side="start">
           <ion-item-option color="secondary" (click)="add()">
-            <!-- [routerLink]="['/procedimentos', procedimento.id]" -->
             <ion-icon name="build" slot="icon-only"></ion-icon>
           </ion-item-option>
         </ion-item-options>
 
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="remove()">
+          <ion-item-option color="danger" (click)="add()">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-item-option>
         </ion-item-options>

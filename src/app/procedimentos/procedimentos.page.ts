@@ -61,15 +61,7 @@ export class ProcedimentosPage implements OnInit {
     alert.present();
   }
 
-/*
-   remove(procedimento: Procedimento){
-    this.procedimentosService.remove(procedimento.id).subscribe(procedimento => {
-      console.log(procedimento)
-    });
-  }
-*/
-
-  async remove(procedimento: Procedimento) {
+  async remove() {
     const alert = await this.alertController.create({
       header: 'Deletar Procedimento ?',
       buttons: [
@@ -78,9 +70,9 @@ export class ProcedimentosPage implements OnInit {
         },
         {
           text: 'Deletar',
-          handler: (id) => {
+          handler: (value) => {
             this.loading = true;
-            this.procedimentosService.remove(id).subscribe(() => this.loadProcedimentos());
+            this.procedimentosService.remove(value).subscribe(() => this.loadProcedimentos());
           }
         }
       ]

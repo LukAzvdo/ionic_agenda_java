@@ -33,7 +33,7 @@ export class MedicosRegisterPage implements OnInit,OnDestroy,ViewWillEnter,ViewD
     console.log('MedicosRegisterPage ngOnInit');
     this.form = this.formBuilder.group({
       id: [''],
-      nome: ['', [Validators.required, Validators.minLength(5)]],
+      nome: ['', [Validators.required, Validators.minLength(4)]],
       especialidade: [Especialidade.clinica_medica, Validators.required],
       crm: ['', Validators.required],
       uf: [UF.SC, Validators.required],
